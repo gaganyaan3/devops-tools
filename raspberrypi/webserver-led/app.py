@@ -8,17 +8,14 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(21, GPIO.OUT)
 GPIO.setup(20, GPIO.OUT, initial=GPIO.LOW)
 
-led_status = GPIO.input(21)
+#led_status = GPIO.input(21)
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
 
 @app.route('/', methods=['GET'])
 def home():
-    if led_status:
-        return "<center><h1><a href=/on>ON<a/> <a href=/off>OFF<a/></h1><br>Led status: Off</center>"
-    else:
-        return "<center><h1><a href=/on>ON<a/> <a href=/off>OFF<a/></h1><br>Led status: On</center>"
+    return "<center><h1><a href=/on>ON<a/> <a href=/off>OFF<a/></h1><br></center>"
 
 @app.route('/on', methods=['GET'])
 def on():
